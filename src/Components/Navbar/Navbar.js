@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true); // Track login state
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
     const [username, setUsername] = useState(""); // Store username
     const [email, setEmail] = useState(""); // Store email
     const [showDropdown, setShowDropdown] = useState(false);

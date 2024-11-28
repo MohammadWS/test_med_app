@@ -75,6 +75,9 @@ const Sign_Up = () => {
                             <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
 
                         </div>
+                        <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">
+                            SignUp
+                        </button>
                     </form>
                 </div>
             </div>
