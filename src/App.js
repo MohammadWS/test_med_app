@@ -4,7 +4,8 @@ import Navbar from './Components/Navbar/Navbar';
 import Landing_Page from './Components/Landing_Page/Landing_Page.js';
 import SignUp from './Components/Sign_Up/Sign_Up.js';
 import Login from './Components/Login/Login.js';
-import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation.js';  
+// import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation.js';  
+import InstantConsultation from './Components/BookingConsultation.js';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 // Correct imports for free FontAwesome icons
