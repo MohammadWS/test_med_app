@@ -49,4 +49,4 @@ const FindDoctorSearch = () => {
     )
 }
 
-export default FindDoctorSearch
+export default FindDoctorSearch;
