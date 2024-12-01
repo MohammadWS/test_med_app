@@ -45,6 +45,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
         localStorage.setItem('appointments', JSON.stringify(updatedAppointments))
         setfilteredAppointment( updatedAppointments.filter((appointment) => appointment.doctorName === name))
         setShowModal(false)
+        window.location.reload();
     };
 
     const handleFormSubmit = (appointmentData) => {
@@ -73,7 +74,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
         console.log(localStorage.getItem('appointments'))
         setShowModal(false);
         setfilteredAppointment( updatedAppointments.filter((appointment) => appointment.doctorName === name))
-        
+        window.location.reload()
         
     };
 

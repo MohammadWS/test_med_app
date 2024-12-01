@@ -8,7 +8,7 @@ const Notification = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [doctorData, setDoctorData] = useState(null);
-  const [appointmentData, setAppointmentData] = useState(null);
+  const [appointmentData, setAppointmentData] = useState([]);
   const [showNotification, setShowNotification] = useState(false); // State for controlling notification visibility
 
   // useEffect hook to perform side effects in the component
@@ -31,10 +31,13 @@ const Notification = ({ children }) => {
     }
 
     // Set appointmentData state if storedAppointmentData exists
-    if (storedAppointmentData) {
+    if (storedAppointmentData && storedAppointmentData.length > 0) {
       setAppointmentData(storedAppointmentData);
       console.log(storedAppointmentData)
       setShowNotification(true); // Show notification if appointment data exists
+    }
+    else {
+        setShowNotification(false)
     }
 
   }, []); // Empty dependency array ensures useEffect runs only once after initial render
