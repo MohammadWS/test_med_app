@@ -10,6 +10,7 @@ import Notification from './Components/Notification/Notification.js';
 
 // Correct imports for free FontAwesome icons
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import ReviewForm from './Components/ReviewForm/ReviewForm.js';
 
 // Add the icons to the library
 library.add(fas);
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/login" element={<Login />}/>
                 <Route path="/signup" element={<SignUp />}/>
                 <Route path="/booking-consultation" element={<BookingConsultation />} />
+                <Route path="/reviews" element={<ReviewForm />} />
               </Routes>
           </Notification>
         </BrowserRouter>
