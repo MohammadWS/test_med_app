@@ -1,0 +1,18 @@
+.form-container {
+
+    width: 40vw;
+    justify-content: center;
+    background-color: #dfdfdf;
+    margin: 30px;
+    padding: 50px;
+}
+
+.feedback-form {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.parent-container{
+    display: flex;
+    justify-content: center;
+    padding:  20px;
+}
