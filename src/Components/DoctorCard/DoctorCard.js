@@ -2,38 +2,79 @@ import React, { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './DoctorCard.css';
-// import AppointmentFormIC from '../AppointmentFormIC/AppointmentFormIC'
 import { v4 as uuidv4 } from 'uuid';
-// import AppointmentFormIC from '../InstantConsultationBooking/AppointmentFormIC/AppointmentFormIC';
 import AppointmentForm from '../AppointmentForm/AppointmentForm';
 
 const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
     const [showModal, setShowModal] = useState(false);
     const [appointments, setAppointments] = useState([]);
+    const [username, setUsername] = useState("");
+    const [doctorData, setDoctorData] = useState(null);
+    const [isDoctorBooked, setDoctorBooked] = useState(false);
+    const [filteredAppointment, setfilteredAppointment] = useState([])
+
+
+    useEffect(() => {
+        const storedUsername = sessionStorage.getItem('email');
+        const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
+        const storedAppointmentData = JSON.parse(localStorage.getItem('appointments'));
+
+
+        // Set doctorData state if storedDoctorData exists
+        if (storedDoctorData) {
+            setDoctorData(storedDoctorData);
+        }
+        if (storedAppointmentData) {
+            const filteredAppointmentArray = storedAppointmentData.filter((appointment) => appointment.doctorName === name);
+            setfilteredAppointment(filteredAppointmentArray)
+            setAppointments(storedAppointmentData);
+            console.log(appointments)
+            
+        }
+
+    }, []);
 
     const handleBooking = () => {
         setShowModal(true);
     };
 
     const handleCancel = (appointmentId) => {
-        const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
+        const storedAppointmentData = JSON.parse(localStorage.getItem('appointments'));
+        var updatedAppointments = storedAppointmentData.filter((appointment) => appointment.id !== appointmentId);
         setAppointments(updatedAppointments);
+        localStorage.setItem('appointments', JSON.stringify(updatedAppointments))
+        setfilteredAppointment( updatedAppointments.filter((appointment) => appointment.doctorName === name))
+        setShowModal(false)
     };
 
     const handleFormSubmit = (appointmentData) => {
         const newAppointment = {
             id: uuidv4(),
             name: appointmentData.name,
+            doctorName: appointmentData.doctorName,
             phoneNumber: appointmentData.phoneNumber,
             date: appointmentData.date,
             time: appointmentData.time,
-            speciality: appointmentData.doctorSpeciality
-
+            doctorSpeciality: appointmentData.doctorSpeciality
         };
-        const updatedAppointments = [...appointments, newAppointment];
+        var updatedAppointments = appointments;
+        if (appointments && appointments.length > 0) {
+            updatedAppointments = [...appointments, newAppointment];
+        }
+        else {
+            updatedAppointments = [newAppointment];
+        }
+        console.log(newAppointment)
+        console.log(updatedAppointments)
+        console.log(appointments)
         setAppointments(updatedAppointments);
-        localStorage.setItem('appointments', appointments )
+        console.log(appointments)
+        localStorage.setItem('appointments', JSON.stringify(updatedAppointments))
+        console.log(localStorage.getItem('appointments'))
         setShowModal(false);
+        setfilteredAppointment( updatedAppointments.filter((appointment) => appointment.doctorName === name))
+        
+        
     };
 
     return (
@@ -48,7 +89,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
                     <div className="doctor-card-detail-experience">{experience} years experience</div>
                     <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
                 </div>
-                
+
             </div>
 
 
@@ -56,8 +97,8 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
                 <Popup
                     style={{ backgroundColor: '#FFFFFF' }}
                     trigger={
-                        <button className={`book-appointment-btn ${appointments.length > 0 ? 'cancel-appointment' : ''}`}>
-                            {appointments.length > 0 ? (
+                        <button className={`book-appointment-btn ${filteredAppointment && filteredAppointment.length > 0 ? 'cancel-appointment' : ''}`}>
+                            {filteredAppointment && filteredAppointment.length > 0 ? (
                                 <div>Cancel Appointment</div>
                             ) : (
                                 <div>Book Appointment</div>
@@ -83,10 +124,10 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
                                 </div>
                             </div>
 
-                            {appointments.length > 0 ? (
+                            {filteredAppointment && filteredAppointment.length > 0 ? (
                                 <>
                                     <h3 style={{ textAlign: 'center' }}>Appointment Booked!</h3>
-                                    {appointments.map((appointment) => (
+                                    {filteredAppointment.map((appointment) => (
                                         <div className="bookedInfo" key={appointment.id}>
                                             <p>Name: {appointment.name}</p>
                                             <p>Phone Number: {appointment.phoneNumber}</p>

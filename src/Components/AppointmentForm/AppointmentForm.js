@@ -24,7 +24,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
             return;
         }
         
-        onSubmit({ name, phoneNumber, date, time });
+        onSubmit({ name, phoneNumber, date, time, doctorName, doctorSpeciality });
         setName('');
         setPhoneNumber('');
         setDate('');
