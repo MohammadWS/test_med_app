@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
+import './Notification.css'
 
 // Function component Notification to display user notifications
 const Notification = ({ children }) => {
@@ -59,7 +60,7 @@ const Notification = ({ children }) => {
                 <strong>Doctor:</strong> {appointmentData[0]?.doctorName}
               </p>
               <p className="notification-card__message">
-                <strong>speciality:</strong> {appointmentData[0]?.speciality}
+                <strong>speciality:</strong> {appointmentData[0]?.doctorSpeciality}
               </p>
               <p className="notification-card__message">
                 <strong>Name:</strong> {appointmentData[0]?.name}
@@ -68,10 +69,10 @@ const Notification = ({ children }) => {
                 <strong>Phone Number:</strong> {appointmentData[0]?.phoneNumber}
               </p>
               <p className="notification-card__message">
-                <strong>Appointment Time:</strong> {appointmentData[0]?.date}
+                <strong>Date of Appointment:</strong> {appointmentData[0]?.date}
               </p>
               <p className="notification-card__message">
-                <strong>Appointment Date:</strong> {appointmentData[0]?.time}
+                <strong>Time Slot:</strong> {appointmentData[0]?.time}
               </p>
             </div>
           </div>

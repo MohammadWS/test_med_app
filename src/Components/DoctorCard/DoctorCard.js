@@ -26,7 +26,8 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
             name: appointmentData.name,
             phoneNumber: appointmentData.phoneNumber,
             date: appointmentData.date,
-            time: appointmentData.time
+            time: appointmentData.time,
+            speciality: appointmentData.doctorSpeciality
 
         };
         const updatedAppointments = [...appointments, newAppointment];
