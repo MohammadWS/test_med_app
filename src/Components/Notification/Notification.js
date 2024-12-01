@@ -1,19 +1,22 @@
-// Following code has been commented with appropriate comments for your reference.
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 
+// Function component Notification to display user notifications
 const Notification = ({ children }) => {
+  // State variables to manage user authentication, username, doctor data, and appointment data
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [doctorData, setDoctorData] = useState(null);
   const [appointmentData, setAppointmentData] = useState(null);
+  const [showNotification, setShowNotification] = useState(false); // State for controlling notification visibility
 
   // useEffect hook to perform side effects in the component
   useEffect(() => {
     // Retrieve stored username, doctor data, and appointment data from sessionStorage and localStorage
     const storedUsername = sessionStorage.getItem('email');
     const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
-    const storedAppointmentData = JSON.parse(localStorage.getItem(storedDoctorData?.name));
+    // const storedAppointmentData = JSON.parse(localStorage.getItem(storedDoctorData?.name));
+    const storedAppointmentData = JSON.parse(localStorage.getItem('appointments'));
 
     // Set isLoggedIn state to true and update username if storedUsername exists
     if (storedUsername) {
@@ -29,30 +32,50 @@ const Notification = ({ children }) => {
     // Set appointmentData state if storedAppointmentData exists
     if (storedAppointmentData) {
       setAppointmentData(storedAppointmentData);
+      console.log(storedAppointmentData)
+      setShowNotification(true); // Show notification if appointment data exists
     }
+
   }, []); // Empty dependency array ensures useEffect runs only once after initial render
 
   // Return JSX elements to display Navbar, children components, and appointment details if user is logged in
   return (
     <div>
       {/* Render Navbar component */}
-      <Navbar ></Navbar>
+      <Navbar></Navbar>
       {/* Render children components */}
       {children}
-      {/* Display appointment details if user is logged in and appointmentData is available */}
-      {isLoggedIn && appointmentData && (
-        <>
-          <div className="appointment-card">
-            <div className="appointment-card__content">
+      
+      {/* Conditionally display notification if logged in and appointmentData is available */}
+      {showNotification && isLoggedIn && appointmentData && (
+        <div className="notification-container">
+          <div className="notification-card">
+            <div className="notification-card__content">
               {/* Display title for appointment details */}
-              <h3 className="appointment-card__title">Appointment Details</h3>
-              <p className="appointment-card__message">
-                {/* Display doctor's name from doctorData */}
-                <strong>Doctor:</strong> {doctorData?.name}
+              <h3 className="notification-card__title">Appointment Details</h3>
+              
+              {/* Display user name, doctor name, and appointment details */}
+              <p className="notification-card__message">
+                <strong>Doctor:</strong> {appointmentData[0]?.doctorName}
+              </p>
+              <p className="notification-card__message">
+                <strong>speciality:</strong> {appointmentData[0]?.speciality}
+              </p>
+              <p className="notification-card__message">
+                <strong>Name:</strong> {appointmentData[0]?.name}
+              </p>
+              <p className="notification-card__message">
+                <strong>Phone Number:</strong> {appointmentData[0]?.phoneNumber}
+              </p>
+              <p className="notification-card__message">
+                <strong>Appointment Time:</strong> {appointmentData[0]?.date}
+              </p>
+              <p className="notification-card__message">
+                <strong>Appointment Date:</strong> {appointmentData[0]?.time}
               </p>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

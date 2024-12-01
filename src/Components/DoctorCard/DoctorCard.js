@@ -23,10 +23,15 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
     const handleFormSubmit = (appointmentData) => {
         const newAppointment = {
             id: uuidv4(),
-            ...appointmentData,
+            name: appointmentData.name,
+            phoneNumber: appointmentData.phoneNumber,
+            date: appointmentData.date,
+            time: appointmentData.time
+
         };
         const updatedAppointments = [...appointments, newAppointment];
         setAppointments(updatedAppointments);
+        localStorage.setItem('appointments', appointments )
         setShowModal(false);
     };
 
