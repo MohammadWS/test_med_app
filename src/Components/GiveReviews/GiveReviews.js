@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import './GiveReviews.css';
 
 // Function component for giving reviews
 function GiveReviews({ onSubmit, consultationId }) {
-    // State variables using useState hook
     const [showForm, setShowForm] = useState(false);
     const [submittedMessage, setSubmittedMessage] = useState('');
     const [showWarning, setShowWarning] = useState(false);
@@ -41,47 +39,47 @@ function GiveReviews({ onSubmit, consultationId }) {
     };
 
     return (
-        <div className="parent-container">
-            <div className="form-container col-6">
-                <form className="feedback-form" onSubmit={handleSubmit}>
-                    <div className="form-subtitle">Give Your Review</div>
+        <div className="flex justify-center p-6">
+            <div className="w-96 bg-gray-50 p-6 rounded-lg shadow-lg">
+                <form onSubmit={handleSubmit}>
+                    <div className="text-center mb-4 text-xl font-semibold">Give Your Review</div>
+                    
                     {/* Display warning message if not all fields are filled */}
-                    {showWarning && <p className="warning">Please fill out all fields.</p>}
+                    {showWarning && <p className="text-red-500 text-center mb-2">Please fill out all fields.</p>}
 
-                    <div className="form-group">
-                        <label htmlFor="name" className="form-label">Name:</label>
+                    <div className="mb-4">
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
                         <input
                             type="text"
                             id="name"
                             name="name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="form-input"
-                            disabled={isSubmitted} // Disable input fields after submission
+                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                            disabled={isSubmitted}
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="review" className="form-label">Review:</label>
+                    <div className="mb-4">
+                        <label htmlFor="review" className="block text-sm font-medium text-gray-700">Review:</label>
                         <textarea
                             id="review"
                             name="review"
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
-                            className="form-textarea"
-                            disabled={isSubmitted} // Disable input fields after submission
+                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                            disabled={isSubmitted}
                         />
                     </div>
 
                     {/* Rating selector */}
-                    <div className="form-group">
-                        <label htmlFor="rating" className="form-label">Rating:</label>
-                        <div className="rating-selector">
-                            {/* Display stars or numbers */}
+                    <div className="mb-4">
+                        <label htmlFor="rating" className="block text-sm font-medium text-gray-700">Rating:</label>
+                        <div className="flex justify-center space-x-2">
                             {[1, 2, 3, 4, 5].map((star) => (
                                 <span
                                     key={star}
-                                    className={`rating-star ${star <= rating ? 'selected' : ''}`}
+                                    className={`text-2xl cursor-pointer transition-colors duration-300 ${star <= rating ? 'text-yellow-500' : 'text-gray-400'}`}
                                     onClick={() => handleRatingChange(star)}
                                 >
                                     ★
@@ -90,17 +88,21 @@ function GiveReviews({ onSubmit, consultationId }) {
                         </div>
                     </div>
 
-                    {/* Submit button for form submission */}
-                    <button type="submit" className="submit-btn" disabled={isSubmitted}>
+                    {/* Submit button */}
+                    <button 
+                        type="submit" 
+                        className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300"
+                        disabled={isSubmitted}
+                    >
                         Submit
                     </button>
                 </form>
 
                 {/* Display the submitted message if available */}
                 {submittedMessage && (
-                    <div className="submitted-message">
-                        <h3 className="submitted-title">Submitted Message:</h3>
-                        <p className="submitted-content">{submittedMessage}</p>
+                    <div className="mt-4 text-center">
+                        <h3 className="font-semibold text-lg">Submitted Message:</h3>
+                        <p>{submittedMessage}</p>
                     </div>
                 )}
             </div>

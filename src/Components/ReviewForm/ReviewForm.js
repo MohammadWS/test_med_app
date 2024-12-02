@@ -40,48 +40,57 @@ const ReviewForm = () => {
     };
 
     return (
-        <section className="review-form">
-            <div>
-
-                <div data-aos="fade-up" className="flex-review">
-                    <span className="review-title">Reviews</span>
+        <section className="review-form py-10 px-4 ">
+            <div className="container mx-auto py-10">
+                <div data-aos="fade-up" className="flex flex-col space-y-4 flex-review">
+                    <span className="text-3xl font-semibold text-center text-gray-700">Reviews</span>
+                    
                     {/* Table Structure */}
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Serial Number</th>
-                                <th>Doctor Name</th>
-                                <th>Doctor Specialty</th>
-                                <th>Provide Feedback</th>
-                                <th>Review Given</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {consultations.map((consultation) => (
-                                <tr key={consultation.id}>
-                                    <td>{consultation.id}</td>
-                                    <td>{consultation.doctor}</td>
-                                    <td>{consultation.specialty}</td>
-                                    <td>
-                                        {/* If feedback is not given, show "Click here" to open feedback form */}
-                                        {!consultation.feedbackGiven ? (
-                                            <button onClick={() => handleFeedbackClick(consultation.id)}>
-                                                Provide Feedback
-                                            </button>
-                                        ) : (
-                                            <span>Feedback Submitted</span>
-                                        )}
-                                    </td>
-                                    <td>{consultation.feedbackGiven ? consultation.review : "No review yet"}</td>
+                    <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
+                        <table className="table-auto w-full text-left text-gray-600">
+                            <thead>
+                                <tr>
+                                    <th className="px-4 py-2 font-bold">Serial Number</th>
+                                    <th className="px-4 py-2 font-bold">Doctor Name</th>
+                                    <th className="px-4 py-2 font-bold">Doctor Specialty</th>
+                                    <th className="px-4 py-2 font-bold">Provide Feedback</th>
+                                    <th className="px-4 py-2 font-bold">Review Given</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {consultations.map((consultation) => (
+                                    <tr key={consultation.id} className="hover:bg-gray-100">
+                                        <td className="px-4 py-2">{consultation.id}</td>
+                                        <td className="px-4 py-2">{consultation.doctor}</td>
+                                        <td className="px-4 py-2">{consultation.specialty}</td>
+                                        <td className="px-4 py-2">
+                                            {/* If feedback is not given, show "Click here" to open feedback form */}
+                                            {!consultation.feedbackGiven ? (
+                                                <button
+                                                    onClick={() => handleFeedbackClick(consultation.id)}
+                                                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none transition duration-150 ease-in-out"
+                                                >
+                                                    Provide Feedback
+                                                </button>
+                                            ) : (
+                                                <span className="text-green-500">Feedback Submitted</span>
+                                            )}
+                                        </td>
+                                        <td className="px-4 py-2">
+                                            {consultation.feedbackGiven ? consultation.review : "No review yet"}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 {/* Feedback Form Visibility */}
                 {showFeedbackForm && (
-                    <GiveReviews key={consultationId} onSubmit={handleFormSubmit} />
+                    <div className="mt-10">
+                        <GiveReviews key={consultationId} onSubmit={handleFormSubmit} />
+                    </div>
                 )}
             </div>
         </section>
