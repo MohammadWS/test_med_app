@@ -56,7 +56,9 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
             phoneNumber: appointmentData.phoneNumber,
             date: appointmentData.date,
             time: appointmentData.time,
-            doctorSpeciality: appointmentData.doctorSpeciality
+            doctorSpeciality: appointmentData.doctorSpeciality,
+            feedbackGiven: false,
+            review: ""
         };
         var updatedAppointments = appointments;
         if (appointments && appointments.length > 0) {
@@ -65,13 +67,10 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
         else {
             updatedAppointments = [newAppointment];
         }
-        console.log(newAppointment)
-        console.log(updatedAppointments)
-        console.log(appointments)
+        
         setAppointments(updatedAppointments);
-        console.log(appointments)
+       
         localStorage.setItem('appointments', JSON.stringify(updatedAppointments))
-        console.log(localStorage.getItem('appointments'))
         setShowModal(false);
         setfilteredAppointment( updatedAppointments.filter((appointment) => appointment.doctorName === name))
         window.location.reload()

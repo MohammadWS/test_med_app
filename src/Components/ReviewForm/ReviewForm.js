@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ReviewForm.css";
 import GiveReviews from "../GiveReviews/GiveReviews";
 
 const ReviewForm = () => {
     // State to manage consultations and form visibility
-    const [consultations, setConsultations] = useState([
-        { id: 1, doctor: "Dr. Smith", specialty: "Cardiologist", feedbackGiven: false },
-        { id: 2, doctor: "Dr. Lee", specialty: "Dermatologist", feedbackGiven: true, review: "Very thorough consultation." },
-        { id: 3, doctor: "Dr. Johnson", specialty: "Pediatrician", feedbackGiven: false },
-    ]);
+    // const [consultations, setConsultations] = useState([
+    //     { id: 1, doctor: "Dr. Smith", specialty: "Cardiologist", feedbackGiven: false },
+    //     { id: 2, doctor: "Dr. Lee", specialty: "Dermatologist", feedbackGiven: true, review: "Very thorough consultation." },
+    //     { id: 3, doctor: "Dr. Johnson", specialty: "Pediatrician", feedbackGiven: false },
+    // ]);
+    const [consultations, setConsultations] = useState([]);
+    // consultation is an appointment
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const [consultationId, setConsultationId] = useState(null);
 
@@ -32,19 +34,45 @@ const ReviewForm = () => {
             return consultation;
         });
 
-        // Set the updated consultations state
         setConsultations(updatedConsultations);
 
-        // Close the feedback form
         setShowFeedbackForm(false);
+        // var updatedConsultation
+        // if (consultations) {
+        //     updatedConsultation = consultations.map(consultation => {
+        //         if (consultation.id === consultationId) {
+        //             return consultation;
+        //         }
+
+        //     });
+        //     updatedConsultation.review = formData.review;
+        //     updatedConsultation.feedbackGiven = true;
+        // }
+        // if (consultations) {
+        //     const updatedAppointments = consultations.map(consultation => {
+        //         if (consultation.id === consultationId) {
+        //             return { ...consultation, ...updatedConsultation }; // Update the specific appointment
+        //         }
+        //         return consultation;
+        //     });
+            localStorage.setItem('appointments', JSON.stringify(updatedConsultations));
+        // } else {
+        //     console.log('No appointments found in localStorage');
+        // }
+        // setConsultations(updatedAppointments)
     };
+
+    useEffect(() => {
+        const storedAppointmentData = JSON.parse(localStorage.getItem('appointments'));
+        setConsultations(storedAppointmentData)
+    }, [])
 
     return (
         <section className="review-form py-10 px-4 ">
             <div className="container mx-auto py-10">
                 <div data-aos="fade-up" className="flex flex-col space-y-4 flex-review">
                     <span className="text-3xl font-semibold text-center text-gray-700">Reviews</span>
-                    
+
                     {/* Table Structure */}
                     <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
                         <table className="table-auto w-full text-left text-gray-600">
@@ -60,9 +88,9 @@ const ReviewForm = () => {
                             <tbody>
                                 {consultations.map((consultation) => (
                                     <tr key={consultation.id} className="hover:bg-gray-100">
-                                        <td className="px-4 py-2">{consultation.id}</td>
-                                        <td className="px-4 py-2">{consultation.doctor}</td>
-                                        <td className="px-4 py-2">{consultation.specialty}</td>
+                                        <td className="px-4 py-2">{consultation.id[0]}</td>
+                                        <td className="px-4 py-2">{consultation.doctorName}</td>
+                                        <td className="px-4 py-2">{consultation.doctorSpeciality}</td>
                                         <td className="px-4 py-2">
                                             {/* If feedback is not given, show "Click here" to open feedback form */}
                                             {!consultation.feedbackGiven ? (
