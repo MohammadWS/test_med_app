@@ -22,7 +22,6 @@ const ReviewForm = () => {
     };
 
     const handleFormSubmit = (formData) => {
-        // Update the consultations state with the feedback data
         const updatedConsultations = consultations.map((consultation) => {
             if (consultation.id === consultationId) {
                 return {
@@ -33,33 +32,10 @@ const ReviewForm = () => {
             }
             return consultation;
         });
-
         setConsultations(updatedConsultations);
-
         setShowFeedbackForm(false);
-        // var updatedConsultation
-        // if (consultations) {
-        //     updatedConsultation = consultations.map(consultation => {
-        //         if (consultation.id === consultationId) {
-        //             return consultation;
-        //         }
+        localStorage.setItem('appointments', JSON.stringify(updatedConsultations));
 
-        //     });
-        //     updatedConsultation.review = formData.review;
-        //     updatedConsultation.feedbackGiven = true;
-        // }
-        // if (consultations) {
-        //     const updatedAppointments = consultations.map(consultation => {
-        //         if (consultation.id === consultationId) {
-        //             return { ...consultation, ...updatedConsultation }; // Update the specific appointment
-        //         }
-        //         return consultation;
-        //     });
-            localStorage.setItem('appointments', JSON.stringify(updatedConsultations));
-        // } else {
-        //     console.log('No appointments found in localStorage');
-        // }
-        // setConsultations(updatedAppointments)
     };
 
     useEffect(() => {
