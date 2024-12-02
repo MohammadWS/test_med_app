@@ -53,36 +53,44 @@ const Sign_Up = () => {
 
 
     return (
-        <div className="sigup-container" style={{ marginTop: '5%' }}>
-            <div className="signup-grid">
-                <div className="signup-form">
-                    <form method="POST" onSubmit={register}>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
-                            {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="phone">Phone</label>
-                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
+        <div className="main-content">
+            <div className="sigup-container flex justify-center">
+                <div className="w-[30rem] shadow-lg p-10 m-10 rounded-lg">
+                    <div className="signup-form ">
+                        <div className="mb-10">
+                            <div className="font-bold text-2xl mb-10 text-center">
+                                SIGN UP
+                            </div>
+                            <div className="font-bold text-2xl  text-center">
+                                already a member? LOGIN
+                            </div></div>
+                        <form method="POST" onSubmit={register}>
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
+                                {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="name">Name</label>
+                                <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="phone">Phone</label>
+                                <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
 
-                        </div>
-                        <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">
-                            SignUp
-                        </button>
-                    </form>
+                            </div>
+                            <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">
+                                SignUp
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-
     );
 }
 

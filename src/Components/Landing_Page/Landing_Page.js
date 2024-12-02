@@ -6,7 +6,7 @@ import "./LandingPage.css";
 const Landing_Page = () => {
   return (
     <section className="hero-section">
-      <div>
+      <div className="main-content">
         <div data-aos="fade-up" className="flex-hero"> 
             
             <h1>

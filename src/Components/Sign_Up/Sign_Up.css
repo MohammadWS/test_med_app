@@ -67,6 +67,7 @@
 
 .form-group {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .form-group label {
@@ -76,7 +77,6 @@
 }
 
 .form-control {
-    width: 40%;
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;

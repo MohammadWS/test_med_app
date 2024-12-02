@@ -6,7 +6,7 @@ import AppointmentFormIC from '../AppointmentFormIC/AppointmentFormIC'
 import { v4 as uuidv4 } from 'uuid';
 
 
-const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => {
+const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic, setShowNotification }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
 
@@ -26,7 +26,8 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => 
     };
     const updatedAppointments = [...appointments, newAppointment];
     setAppointments(updatedAppointments);
-    setShowModal(false);
+    // setShowModal(false);
+    setShowNotification(true)
   };
 
   return (

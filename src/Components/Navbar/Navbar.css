@@ -1,5 +1,5 @@
 nav {
-    padding: 1.5rem;
+    padding: 20px;
     position: fixed;
     top: 0%;
     left: 50%;
@@ -9,6 +9,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
+    height: 100px;
 }
 .dropdown-menu {
     position: absolute;
@@ -31,7 +32,7 @@ nav {
 }
 .dropdown-menu li {
     display: block;
-    width: 150px;
+    /* width: 150px; */
     padding:5px;
 }
 .dropdown-menu li a {
@@ -119,7 +120,7 @@ nav {
     background-color: white;
     color: black;
     border-radius: 50px;
-    width: 7vw;
+    display: flex;
 }
 .btn1:hover {
     background-color: #3685fb; /* Hover effect */
