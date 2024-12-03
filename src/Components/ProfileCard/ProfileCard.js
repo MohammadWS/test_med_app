@@ -143,17 +143,17 @@ const ProfileForm = () => {
                         </button>
                     </form>
                 ) : (
-                    <div className="space-y-4">
-                        <div className="text-2xl font-semibold">Welcome, {userDetails.name}</div>
+                    <div className="space-y-4 p-2">
+                        <div className="text-2xl font-bold">Welcome, {userDetails.name}</div>
                         <div className="text-lg">
-                            <span className="font-medium">Email:</span> {userDetails.email}
+                            <span className="font-semibold">Email:</span> {userDetails.email}
                         </div>
                         <div className="text-lg">
-                            <span className="font-medium">Phone:</span> {userDetails.phone}
+                            <span className="font-semibold">Phone:</span> {userDetails.phone}
                         </div>
                         <button
                             onClick={handleEdit}
-                            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+                            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
                         >
                             Edit
                         </button>
