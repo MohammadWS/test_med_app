@@ -38,8 +38,8 @@ const ReviewForm = () => {
 
     return (
         <div className="main-content">
-            <section className="review-form px-4 ">
-                <div className="container mx-auto ">
+            <section className="review-form mx-10 px-4 ">
+                <div className="mx-auto ">
                     <div data-aos="fade-up" className="flex flex-col space-y-4 flex-review">
                         <span className="text-3xl font-semibold text-center text-gray-700">Reviews</span>
 

@@ -149,21 +149,21 @@ nav {
     background-color:#3685fb; /* Hover effect */
     color:white; /* Hover effect */
 }
-.btn3 {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1rem;
-    font-weight: 500;
+.btn2 {
+    border: 2px solid #3685fb;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    display: inline-flex;
+    padding: 10px;
+    align-items:center; /* Align items and justify content */
+    justify-content:center; /* Align items and justify content */
+    /* margin-top:3px; Margin from top */
+    transition: all 0.3 ease-in-out;
 }
-.btn3 a {
-    padding: 0 1rem;
-    color: #0d213f;
-    transition: 0.3s;
-}
-.btn3 a:hover {
-    color: #3685fb;
+.btn2:hover {
+    background-color: #3685fb; /* Hover effect */
+    color: white; /* Hover effect */
 }
 /* Dropdown menu styles */
 .username-menu {

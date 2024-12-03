@@ -74,20 +74,20 @@ const Sign_Up = () => {
                         <form method="POST" onSubmit={register}>
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
-                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
+                                <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
                                 {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
                             </div>
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
-                                <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
+                                <input required value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="phone">Phone</label>
-                                <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" />
+                                <input required value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Password</label>
-                                <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
+                                <input required value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
 
                             </div>
                             <button type="submit" className="btn signup-btn mb-2 mr-1 waves-effect waves-light">
