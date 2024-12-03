@@ -141,3 +141,52 @@ nav {
     background-color:#3685fb; /* Hover effect */
     color:white; /* Hover effect */
 }
+.btn3 {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.btn3 a {
+    padding: 0 1rem;
+    color: #0d213f;
+    transition: 0.3s;
+}
+.btn3 a:hover {
+    color: #3685fb;
+}
+/* Dropdown menu styles */
+.username-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    padding: 10px;
+    list-style-type: none;
+    border-radius: 4px;
+}
+
+.username-menu li {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style for username button to indicate it's clickable */
+.username-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+}
+
+.username-btn:focus {
+    outline: none;
+}

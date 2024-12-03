@@ -80,7 +80,19 @@ const Navbar = () => {
                 {isLoggedIn ? (
                     <>
                         <li className="link">
-                            <Link to="/profile">{username}</Link>
+                            <button onClick={handleDropdown} className="btn3">
+                                {username}
+                            </button>
+                            {/* Show dropdown if visible */}
+                            {showDropdown && (
+                                <ul className="username-menu">
+                                    <li>
+                                        <Link to="/profile" onClick={() => setShowDropdown(false)}>
+                                            Your Profile
+                                        </Link>
+                                    </li>
+                                </ul>
+                            )}
                         </li>
                         <li className="link">
                             <button className="btn2" onClick={handleLogout}>
