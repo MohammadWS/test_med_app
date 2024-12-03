@@ -37,9 +37,9 @@ const ReviewForm = () => {
     }, [])
 
     return (
-        <section className="review-form py-10 px-4 ">
-            <div className="main-content">
-                <div className="container mx-auto py-10">
+        <div className="main-content">
+            <section className="review-form px-4 ">
+                <div className="container mx-auto ">
                     <div data-aos="fade-up" className="flex flex-col space-y-4 flex-review">
                         <span className="text-3xl font-semibold text-center text-gray-700">Reviews</span>
 
@@ -91,8 +91,8 @@ const ReviewForm = () => {
                         </div>
                     )}
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     );
 };
 

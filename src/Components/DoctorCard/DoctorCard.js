@@ -97,7 +97,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
                 <Popup
                     style={{ backgroundColor: '#FFFFFF' }}
                     trigger={
-                        <button className={`book-appointment-btn ${filteredAppointment && filteredAppointment.length > 0 ? 'cancel-appointment' : ''}`}>
+                        <button className={`book-btn ${filteredAppointment && filteredAppointment.length > 0 ? 'cancel-btn' : 'book-appointment'}`}>
                             {filteredAppointment && filteredAppointment.length > 0 ? (
                                 <div>Cancel Appointment</div>
                             ) : (
@@ -129,9 +129,9 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
                                     <h3 style={{ textAlign: 'center' }}>Appointment Booked!</h3>
                                     {filteredAppointment.map((appointment) => (
                                         <div className="bookedInfo" key={appointment.id}>
-                                            <p>Name: {appointment.name}</p>
-                                            <p>Phone Number: {appointment.phoneNumber}</p>
-                                            <button onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
+                                            <p><span className="font-bold">Name:</span>   {appointment.name}</p>
+                                            <p><span className="font-bold">Phone Number:</span>   {appointment.phoneNumber}</p>
+                                            <button className="book-btn cancel-btn" onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
                                         </div>
                                     ))}
                                 </>
