@@ -1,7 +1,7 @@
 // Following code has been commented with appropriate comments for your reference.
 import React, { useState, useEffect } from 'react';
 // Apply CSS according to your design theme or the CSS provided in week 2 lab 2
-
+import './Login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
 
@@ -61,19 +61,21 @@ const Login = () => {
     return (
         <div className="main-content">
             <div className="sigup-container flex justify-center">
-                <div className="w-[30rem] shadow-lg p-10 m-10 rounded-lg">
-                    <div className="login-text">
-                        <h2>Login</h2>
+                <div className="w-[30rem] shadow-lg p-10 m-4 rounded-lg">
+                    <div className='mb-10'>
+                        <div className="font-bold text-center mb-3 text-2xl">
+                            <div>LOGIN</div>
+                        </div>
+                        <div className="font-light text-md  text-center">
+                            <span>Are you a new member?</span>
+                            <span> </span>
+                            <span>
+                                <Link to="/signup" style={{ color: '#2190FF' }}>
+                                    Sign Up Here
+                                </Link>
+                            </span>
+                        </div>
                     </div>
-                    <div className="login-text">
-                        Are you a new member?
-                        <span>
-                            <Link to="/signup" style={{ color: '#2190FF' }}>
-                                Sign Up Here
-                            </Link>
-                        </span>
-                    </div>
-                    <br />
                     <div className="login-form">
                         <form onSubmit={login}>
                             <div className="form-group">
@@ -105,7 +107,7 @@ const Login = () => {
                             </div>
                             <div className="btn-group">
                                 {/* Login button */}
-                                <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">
+                                <button type="submit" className="btn login-btn mb-2 mr-1 waves-effect waves-light">
                                     Login
                                 </button>
                             </div>

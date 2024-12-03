@@ -55,15 +55,22 @@ const Sign_Up = () => {
     return (
         <div className="main-content">
             <div className="sigup-container flex justify-center">
-                <div className="w-[30rem] shadow-lg p-10 m-10 rounded-lg">
+                <div className="w-[30rem] shadow-lg p-10 m-4 rounded-lg">
                     <div className="signup-form ">
                         <div className="mb-10">
-                            <div className="font-bold text-2xl mb-10 text-center">
+                            <div className="font-bold text-2xl mb-3 text-center">
                                 SIGN UP
                             </div>
-                            <div className="font-bold text-2xl  text-center">
-                                already a member? LOGIN
-                            </div></div>
+                            <div className="font-light text-md  text-center">
+                                <span>already a member?</span>
+                                <span> </span>
+                                <span>
+                                    <Link to="/signup" style={{ color: '#2190FF' }}>
+                                        LOGIN
+                                    </Link>
+                                </span>
+                            </div>
+                        </div>
                         <form method="POST" onSubmit={register}>
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
@@ -83,7 +90,7 @@ const Sign_Up = () => {
                                 <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
 
                             </div>
-                            <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">
+                            <button type="submit" className="btn signup-btn mb-2 mr-1 waves-effect waves-light">
                                 SignUp
                             </button>
                         </form>
