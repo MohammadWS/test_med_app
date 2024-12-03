@@ -27,7 +27,7 @@ const Landing_Page = () => {
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Suscipit omnis quibusdam non cum rem voluptatem!
             </h4>
             <a href="#services">
-              <button class="button">Get Started</button>
+              <button class="lp-button">Get Started</button>
             </a>
         </div>
       </div>

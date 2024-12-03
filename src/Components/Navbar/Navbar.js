@@ -57,7 +57,6 @@ const Navbar = () => {
                 <Link to="/">
                     StayHealthy <i style={{ color: '#2190FF' }} className="fa fa-user-md"></i>
                 </Link>
-                <span>.</span>
             </div>
             <div className="nav__icon" onClick={handleClick}>
                 <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
