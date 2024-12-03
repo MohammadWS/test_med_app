@@ -90,6 +90,11 @@ const Navbar = () => {
                                             Your Profile
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link to="/reports" onClick={() => setShowDropdown(false)}>
+                                            Your Reports
+                                        </Link>
+                                    </li>
                                 </ul>
                             )}
                         </li>

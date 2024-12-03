@@ -12,6 +12,7 @@ import Notification from './Components/Notification/Notification.js';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import ReviewForm from './Components/ReviewForm/ReviewForm.js';
 import ProfileForm from './Components/ProfileCard/ProfileCard.js';
+import ReportsLayout from './Components/ReportsLayout/ReportsLayout.js';
 // import ProfileForm from './Components/ProfileCard/ProfileCard.js';
 // import ProfileCard from './Components/ProfileCard/ProfileCard.js';
 // Add the icons to the library
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/booking-consultation" element={<BookingConsultation />} />
                 <Route path="/reviews" element={<ReviewForm />} />
                 <Route path="/profile" element={<ProfileForm />} />
+                <Route path="/reports" element={<ReportsLayout />} />
               </Routes>
           </Notification>
         </BrowserRouter>
