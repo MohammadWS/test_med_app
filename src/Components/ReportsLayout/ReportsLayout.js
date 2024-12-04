@@ -2,38 +2,37 @@ import React, { useState, useEffect } from "react";
 
 const ReportsLayout = () => {
     const [reports, setReports] = useState([]);
+    const constReportURL = process.env.PUBLIC_URL + "/patient_report.pdf"
+    // Sample reports data (this will eventually be fetched or retrieved from localStorage)
     const sampleReports = [
         {
             "id": "1",
             "doctorName": "Dr. John Doe",
             "doctorSpecialty": "Cardiology",
-            "reportUrl": "http://example.com/report1.pdf"
+            "reportUrl": constReportURL  // Path to the report file
         },
         {
             "id": "2",
             "doctorName": "Dr. Jane Smith",
             "doctorSpecialty": "Neurology",
-            "reportUrl": "http://example.com/report2.pdf"
+            "reportUrl": constReportURL // Same report for demo
         }
-    ]
+    ];
 
-
+    // Fetch the reports when the component mounts
     useEffect(() => {
-        // For the sake of this example, assuming reports data comes from localStorage.
-        // const storedReports = JSON.parse(localStorage.getItem('reports')) || [];
-        // setReports(storedReports);
         setReports(sampleReports);
     }, []);
 
-    // Function to handle downloading report (assuming report has a URL)
+    // Function to handle downloading the report
     const handleDownloadReport = (reportUrl) => {
         const link = document.createElement('a');
         link.href = reportUrl;
-        link.download = reportUrl.split('/').pop(); // Get the file name from the URL
+        link.download = reportUrl.split('/').pop(); // Extract the file name from the URL
         link.click();
     };
 
-    // Function to handle viewing report (open in new tab or modal)
+    // Function to handle viewing the report (open in a new tab)
     const handleViewReport = (reportUrl) => {
         window.open(reportUrl, '_blank');
     };
