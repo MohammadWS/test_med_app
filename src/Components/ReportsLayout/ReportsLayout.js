@@ -4,24 +4,27 @@ const ReportsLayout = () => {
     const [reports, setReports] = useState([]);
     const constReportURL = process.env.PUBLIC_URL + "/patient_report.pdf"
     // Sample reports data (this will eventually be fetched or retrieved from localStorage)
-    const sampleReports = [
-        {
-            "id": "1",
-            "doctorName": "Dr. John Doe",
-            "doctorSpecialty": "Cardiology",
-            "reportUrl": constReportURL  // Path to the report file
-        },
-        {
-            "id": "2",
-            "doctorName": "Dr. Jane Smith",
-            "doctorSpecialty": "Neurology",
-            "reportUrl": constReportURL // Same report for demo
-        }
-    ];
+
+    // const sampleReports = [
+    //     {
+    //         "id": "1",
+    //         "doctorName": "Dr. John Doe",
+    //         "doctorSpecialty": "Cardiology",
+    //         "reportUrl": constReportURL  // Path to the report file
+    //     },
+    //     {
+    //         "id": "2",
+    //         "doctorName": "Dr. Jane Smith",
+    //         "doctorSpecialty": "Neurology",
+    //         "reportUrl": constReportURL // Same report for demo
+    //     }
+    // ];
 
     // Fetch the reports when the component mounts
     useEffect(() => {
-        setReports(sampleReports);
+        // setReports(sampleReports);
+        const storedAppointmentData = JSON.parse(localStorage.getItem('appointments'));
+        setReports(storedAppointmentData)
     }, []);
 
     // Function to handle downloading the report
@@ -57,14 +60,14 @@ const ReportsLayout = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {reports.map((report) => (
+                                    {reports && reports.map((report) => (
                                         <tr key={report.id} className="hover:bg-gray-100">
                                             <td className="px-4 py-2">{report.id}</td>
                                             <td className="px-4 py-2">{report.doctorName}</td>
-                                            <td className="px-4 py-2">{report.doctorSpecialty}</td>
+                                            <td className="px-4 py-2">{report.doctorSpeciality}</td>
                                             <td className="px-4 py-2">
                                                 <button
-                                                    onClick={() => handleViewReport(report.reportUrl)}
+                                                    onClick={() => handleViewReport(constReportURL)}
                                                     className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none transition duration-150 ease-in-out"
                                                 >
                                                     View Report
@@ -72,7 +75,7 @@ const ReportsLayout = () => {
                                             </td>
                                             <td className="px-4 py-2">
                                                 <button
-                                                    onClick={() => handleDownloadReport(report.reportUrl)}
+                                                    onClick={() => handleDownloadReport(constReportURL)}
                                                     className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none transition duration-150 ease-in-out"
                                                 >
                                                     Download Report
